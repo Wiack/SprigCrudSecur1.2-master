@@ -15,7 +15,6 @@ import javax.validation.Valid;
 import java.util.Collections;
 
 @Controller
-//@RequestMapping("/login")
 public class LoginController {
     private UserService userService;
     private RoleService roleService;
