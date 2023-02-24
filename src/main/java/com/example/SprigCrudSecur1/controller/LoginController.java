@@ -27,21 +27,21 @@ public class LoginController {
 
     @GetMapping("/login")
     public String getLogin() {
-        return "login";
+        return "all/login";
     }
 
     @GetMapping("/registration")
     public String registration(Model model) {
         model.addAttribute("newUser", new User());
         model.addAttribute("allRoles", roleService.findAll());
-        return "registration";
+        return "all/registration";
     }
 
     @PostMapping("/registration")
     public String addNewUser(@ModelAttribute("user") @Valid User user, BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
-            return "/login";
+            return "all/login";
         }
         user.setRoles(Collections.singleton(roleService.findByName("ROLE_USER")));
         userService.addUser(user);
